@@ -4,6 +4,16 @@
 # Written by Tony Lyons 09/2020 | www.CreativeLyons.com | www.CompositingMentor.com
 #*****************************************************************
 #*****************************************************************
+#
+# SSE Notes:
+# - Read the init.py file!
+# - It explains what we did to NST to make it work nicely with the SSE pipeline.
+# - For this file (menu.py):
+#   - added some code to set the plugin paths to the proper folders.
+#   - added some print statements help debug the plugin during startup
+#
+print("===============================================================================")
+print('menu.py... [start] ({})'.format(__file__))
 
 import nuke
 import sys
@@ -11,11 +21,15 @@ import os
 import webbrowser
 
 # Add PluginPaths to tools and icons
-nuke.pluginAddPath('./gizmos')
-nuke.pluginAddPath('./python')
-nuke.pluginAddPath('./icons')
-nuke.pluginAddPath('./images')
-nuke.pluginAddPath('./nk_files')
+# - SSE Note:
+#   The plugins were already added in init.py to make them available on the farm.
+#   No need to re-add them here.
+#
+#nuke.pluginAddPath('./gizmos')
+#nuke.pluginAddPath('./python')
+#nuke.pluginAddPath('./icons')
+#nuke.pluginAddPath('./images')
+#nuke.pluginAddPath('./nk_files')
 
 # Import some helpful functions for the NST
 import NST_helper
@@ -39,9 +53,13 @@ NST_helpDocPath = "file:///{}".format(NST_helpDoc_os_path)
 ############################################################################################################
 ############################################################################################################
 
-# Create NukeSurivalToolkit Menu
-toolbar = nuke.menu('Nodes')
+# SSE - add to "external tools" toolbar
+toolbar = nuke.toolbar("Nodes").addMenu("ExternalTools", "external_tools_256x256.png")
 m = toolbar.addMenu('NukeSurvivalToolkit', icon = "SurvivalToolkit.png")
+
+# ORIGINAL -- Create NukeSurivalToolkit Menu
+#toolbar = nuke.menu('Nodes')
+#m = toolbar.addMenu('NukeSurvivalToolkit', icon = "SurvivalToolkit.png")
 
 
 ############################################################################################################
@@ -726,3 +744,14 @@ gizmoDemoMenu.addCommand('UVEditor Demo MJT', "nuke.nodePaste('{}/nk_files/{}UVE
 gizmoDemoMenu.addCommand('Sparky Demo DB', "nuke.nodePaste('{}/nk_files/{}SparkyExampleScene.nk')".format(NST_FolderPath, prefixNST), icon="Sparky.png")
 gizmoDemoMenu.addCommand('ParticleLights Demo MHD', "nuke.nodePaste('{}/nk_files/{}ParticleLights_ExampleScript.nk')".format(NST_FolderPath, prefixNST), icon="ToolbarParticles.png")
 gizmoDemoMenu.addCommand("X_Aton Volumetric Demo XM", "nuke.nodePaste('{}/nk_files/{}X_Aton_Examples.nk')".format(NST_FolderPath, prefixNST), icon="X_Aton.png")
+
+#----------------------------------------------------------------------------
+# SSE additions
+
+# Links to relevant websites
+NST_github_link = "https://github.com/CreativeLyons/NukeSurvivalToolkit_publicRelease/tree/master"
+m.addSeparator()
+m.addCommand("Documentation", lambda: webbrowser.open(NST_helpDocPath), icon="info_icon.png")
+m.addCommand("GitHub", lambda: webbrowser.open(NST_github_link), icon="SurvivalToolkit.png")
+
+print('menu.py... [done] ({})'.format(__file__))
