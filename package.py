@@ -1,6 +1,6 @@
 name = 'NukeSurvivalToolkit'
 
-version = '2.1.1.sse.1.2.0'
+version = '2.1.1.sse.1.2.1'
 
 authors = [
     'CreativeLyons',

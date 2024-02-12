@@ -12,8 +12,6 @@
 #   - added some code to set the plugin paths to the proper folders.
 #   - added some print statements help debug the plugin during startup
 #
-print("===============================================================================")
-print('menu.py... [start] ({})'.format(__file__))
 
 import nuke
 import sys
@@ -185,7 +183,6 @@ try:
     import ColorGradientUi
     drawMenu.addCommand("GradientEditor MHD", "nuke.createNode('{}h_gradienteditor')".format(prefixNST), icon="h_gradienteditor.png")
 except:
-    print("Could not load ColorGradientUi from HagbarthTools folder")
     pass
 
 drawMenu.addSeparator()
@@ -473,7 +470,6 @@ try:
     nuke.load('{}VectorTracker.py'.format(prefixNST))
     transformMenu.addCommand('VectorTracker NKPD', "nuke.createNode('{}VectorTracker.gizmo')".format(prefixNST), icon = 'vectorTools.png')
 except:
-    print("Could not load VectorTracker.py")
     pass
 
 transformMenu.addSeparator()
@@ -501,7 +497,6 @@ try:
     import NST_cardToTrack
     transformMenu.addCommand('CardToTrack AK', "nuke.createNode('{}CardToTrack')".format(prefixNST), icon='Card.png')
 except:
-    print("Could not load NST_cardToTrack.py")
     pass
 
 transformMenu.addCommand('CProject AK', "nuke.createNode('{}CProject')".format(prefixNST), icon='CornerPin.png')
@@ -754,4 +749,3 @@ m.addSeparator()
 m.addCommand("Documentation", lambda: webbrowser.open(NST_helpDocPath), icon="info_icon.png")
 m.addCommand("GitHub", lambda: webbrowser.open(NST_github_link), icon="SurvivalToolkit.png")
 
-print('menu.py... [done] ({})'.format(__file__))

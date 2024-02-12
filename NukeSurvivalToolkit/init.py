@@ -16,8 +16,6 @@
          vet these tools more carefully.
 
 """
-print("===============================================================================")
-print('init.py... [start] ({})'.format(__file__))
 
 import os
 import nuke
@@ -30,5 +28,3 @@ nuke.pluginAddPath('{0}/python'.format(NST_FolderPath))
 nuke.pluginAddPath('{0}/icons'.format(NST_FolderPath))
 nuke.pluginAddPath('{0}/images'.format(NST_FolderPath))
 nuke.pluginAddPath('{0}/nk_files'.format(NST_FolderPath))
-
-print('init.py... [done] ({})'.format(__file__))
