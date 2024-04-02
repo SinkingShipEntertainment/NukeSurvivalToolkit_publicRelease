@@ -20,7 +20,6 @@ private_build_requires = [
 ]
 
 variants = [
-    #['platform-linux', 'arch-x86_64', 'os-centos-7'],
 ]
 
 
